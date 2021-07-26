@@ -8,28 +8,28 @@ namespace FreeDeskTask1.Model
 {
     class Restauant : IRestaurant
     {
-        public List<ILine> Lines => throw new NotImplementedException();
+        public List<ILine> Lines { get; set; }
 
-        public List<ICustomer> Customers => throw new NotImplementedException();
+        public List<ICustomer> Customers { get; set; }
 
         public void AddCustomer(ICustomer customer)
         {
-            throw new NotImplementedException();
+            Customers.Add(customer);
         }
 
         public void AddLine(ILine line)
         {
-            throw new NotImplementedException();
+            Lines.Add(line);
         }
 
         public void RemoveCustomer(ICustomer customer)
         {
-            throw new NotImplementedException();
+            Customers.Remove(customer);
         }
 
         public void RemoveLine(ILine line)
         {
-            throw new NotImplementedException();
+            Lines.Remove(line);
         }
     }
 }
