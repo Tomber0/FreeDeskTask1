@@ -4,7 +4,7 @@
     {
         public void MoveToLine(ILine line);
         
-        public void ExitFromLine(ILine line);
+        public void ExitFromLine();
 
         public bool FindABetterLine(ILine[] lines);
 
