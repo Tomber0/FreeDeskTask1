@@ -1,10 +1,17 @@
-﻿using System;
+﻿using FreeDeskTask1.View;
+using System;
 using System.Collections;
 
 namespace FreeDeskTask1.Model
 {
     class Customer : ICustomer
     {
+        Printer printer = new ConsolePrinter();
+
+        public delegate void PrintMessage(string message);
+
+        public event PrintMessage OnPrintMessage;
+
         public IRestaurant Restaurant { get => _restaurant; private set => _restaurant = value; }
 
         private int _counter = 1000000;
@@ -33,7 +40,7 @@ namespace FreeDeskTask1.Model
             {
                 return _qeuePosition;
             }
-            set
+            private set
             {
                 if (value >= 0)
                 {
@@ -80,7 +87,7 @@ namespace FreeDeskTask1.Model
 
         public bool Swap(ICustomer customer)
         {
-
+            TryMovePosition()
             return true;
         }
 
@@ -93,7 +100,7 @@ namespace FreeDeskTask1.Model
             }
             catch (Exception ex)
             {
-                   
+                OnPrintMessage(ex.Message);
                 return false;
             }
         }

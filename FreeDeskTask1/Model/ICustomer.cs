@@ -13,5 +13,12 @@
         public void Run();
 
         public bool TryMovePosition(int position);
+
+        public IRestaurant Restaurant { get; }
+
+        public int QeuePosition { get; }
+
+        public ILine Line { get;  }
+
     }
 }
