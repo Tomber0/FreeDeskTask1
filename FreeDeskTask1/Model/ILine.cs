@@ -12,6 +12,5 @@ namespace FreeDeskTask1.Model
 
         public List<ICustomer> Customers { get; }
 
-        public int TotalPeopleInLine { get; }
     }
 }
