@@ -20,5 +20,7 @@
 
         public ILine Line { get;  }
 
+        public string Name { get; }
+
     }
 }

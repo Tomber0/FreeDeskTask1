@@ -6,6 +6,9 @@ namespace FreeDeskTask1.Model
 {
     class Customer : ICustomer
     {
+        public string Name { get; private set; }
+
+
         Printer printer = new ConsolePrinter();
 
         public delegate void PrintMessage(string message);
@@ -87,18 +90,19 @@ namespace FreeDeskTask1.Model
 
         public bool Swap(ICustomer customer)
         {
+            OnPrintMessage($"{Name} trying to swap with {customer.Name}");
             customer.TryMovePosition(QueuePosition);
-            //Queue
             TryMovePosition(customer.QueuePosition);
-
             return true;
         }
 
         public bool TryMovePosition(int position)
         {
+            OnPrintMessage($"{Name} trying to move into {position} position");
             try
             {
                 QueuePosition = position;
+                OnPrintMessage($"{Name} moved into {position}");
                 return true;
             }
             catch (Exception ex)
