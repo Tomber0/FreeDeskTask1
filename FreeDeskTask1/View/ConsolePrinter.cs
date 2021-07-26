@@ -12,5 +12,6 @@ namespace FreeDeskTask1.View
         {
             Console.WriteLine($"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second} {message}");
         }
+        public static object Locker = new object();
     }
 }
