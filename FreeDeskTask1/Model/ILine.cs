@@ -2,6 +2,6 @@
 {
     interface ILine
     {
-
+        public void ServeACustomer(ICustomer customer);
     }
 }
