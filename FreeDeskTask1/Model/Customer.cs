@@ -30,26 +30,26 @@ namespace FreeDeskTask1.Model
             }
         }
 
-        private int _qeuePosition;
+        private int _queuePosition;
 
         private IRestaurant _restaurant;
 
-        public int QeuePosition
+        public int QueuePosition
         {
             get
             {
-                return _qeuePosition;
+                return _queuePosition;
             }
             private set
             {
                 if (value >= 0)
                 {
-                    _qeuePosition = value;
+                    _queuePosition = value;
 
                 }
                 else
                 {
-                    throw new Exception($"{nameof(QeuePosition)} is {value}, {nameof(QeuePosition)} can't be lower than 0 !");
+                    throw new Exception($"{nameof(QueuePosition)} is {value}, {nameof(QueuePosition)} can't be lower than 0 !");
                 }
             }
         }
@@ -87,7 +87,10 @@ namespace FreeDeskTask1.Model
 
         public bool Swap(ICustomer customer)
         {
-            TryMovePosition()
+            customer.TryMovePosition(QueuePosition);
+            //Queue
+            TryMovePosition(customer.QueuePosition);
+
             return true;
         }
 
@@ -95,7 +98,7 @@ namespace FreeDeskTask1.Model
         {
             try
             {
-                QeuePosition = position;
+                QueuePosition = position;
                 return true;
             }
             catch (Exception ex)

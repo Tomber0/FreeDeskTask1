@@ -16,7 +16,7 @@
 
         public IRestaurant Restaurant { get; }
 
-        public int QeuePosition { get; }
+        public int QueuePosition { get; }
 
         public ILine Line { get;  }
 
