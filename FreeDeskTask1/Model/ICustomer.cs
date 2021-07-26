@@ -10,5 +10,8 @@
 
         public bool Swap(ICustomer customer);
 
+        public void Run();
+
+        public bool TryMovePosition(int position);
     }
 }
