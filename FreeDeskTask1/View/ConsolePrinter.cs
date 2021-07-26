@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FreeDeskTask1.View
 {
-    class ConsolePrinter
+    class ConsolePrinter : Printer
     {
+        public override void Print(string message)
+        {
+            Console.WriteLine($"{DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second} {message}");
+        }
     }
 }
