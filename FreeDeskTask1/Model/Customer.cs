@@ -8,7 +8,6 @@ namespace FreeDeskTask1.Model
     {
         public string Name { get; private set; }
 
-
         Printer printer = new ConsolePrinter();
 
         public delegate void PrintMessage(string message);
