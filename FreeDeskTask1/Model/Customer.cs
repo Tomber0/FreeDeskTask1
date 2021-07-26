@@ -84,7 +84,7 @@ namespace FreeDeskTask1.Model
             return true;
         }
 
-        public bool MovePosition(int position)
+        public bool TryMovePosition(int position)
         {
             try
             {
