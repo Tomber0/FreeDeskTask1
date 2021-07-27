@@ -15,5 +15,7 @@ namespace FreeDeskTask1.Model
         public string Name { get; }
 
         public void PushLine();
+
+
     }
 }

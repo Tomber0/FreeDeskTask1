@@ -17,6 +17,7 @@ namespace FreeDeskTask1.Model
         public void AddCustomer(ICustomer customer)
         {
             _customers.Add(customer);
+            
         }
 
         public void RemoveCustomer(ICustomer customer)

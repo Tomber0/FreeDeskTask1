@@ -6,7 +6,7 @@
         
         public void ExitFromLine();
 
-        public bool FindABetterLine(ILine[] lines);
+        public ILine FindABetterLine(ILine[] lines);
 
         public bool Swap(ICustomer customer);
 

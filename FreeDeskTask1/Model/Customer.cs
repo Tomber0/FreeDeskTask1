@@ -1,6 +1,7 @@
 ﻿using FreeDeskTask1.View;
 using System;
 using System.Collections;
+using System.Linq;
 
 namespace FreeDeskTask1.Model
 {
@@ -61,9 +62,18 @@ namespace FreeDeskTask1.Model
             Line = null;
         }
 
-        public bool FindABetterLine(ILine[] lines)
+        public ILine FindABetterLine(ILine[] lines)
         {
-            throw new System.NotImplementedException();
+            int minCustomers = QueuePosition;
+            ILine newLine = null;
+            foreach (var line in lines.Where(l => l!=Line))
+            {
+                if (line.Customers.Count<minCustomers)
+                {
+                    newLine = line;
+                }
+            }
+            return newLine;
         }
 
         public void MoveToLine(ILine line)
@@ -71,6 +81,9 @@ namespace FreeDeskTask1.Model
             if (line != null)
             {
                 Line = line;
+                Line.AddCustomer(this);
+
+                TryMovePosition(Line.Customers.Count);
             }
             else
             {
