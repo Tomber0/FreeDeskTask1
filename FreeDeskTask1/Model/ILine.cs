@@ -12,5 +12,8 @@ namespace FreeDeskTask1.Model
 
         public List<ICustomer> Customers { get; }
 
+        public string Name { get; }
+
+        public void PushLine();
     }
 }

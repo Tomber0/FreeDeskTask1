@@ -31,5 +31,6 @@ namespace FreeDeskTask1.Model
         {
             Lines.Remove(line);
         }
+
     }
 }
