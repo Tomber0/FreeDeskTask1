@@ -1,12 +1,16 @@
 ﻿using FreeDeskTask1.View;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace FreeDeskTask1.Model
 {
     class Customer : ICustomer
     {
+        Random random = new Random();
+
         public string Name { get; private set; }
 
         Printer printer = new ConsolePrinter();
@@ -62,7 +66,7 @@ namespace FreeDeskTask1.Model
             Line = null;
         }
 
-        public ILine FindABetterLine(ILine[] lines)
+        public ILine FindABetterLine(List<ILine> lines)
         {
             int minCustomers = QueuePosition;
             ILine newLine = null;
@@ -95,7 +99,41 @@ namespace FreeDeskTask1.Model
         {
             while (_counter > 0)
             {
-
+                lock (ConsolePrinter.Locker)
+                {
+                    if (Restaurant == null)
+                    {
+                        throw new Exception($"{nameof(Customer)}-{Name} have no restauant!");
+                    }
+                    if (Line == null)
+                    {
+                        var line = FindABetterLine(Restaurant.Lines);
+                        MoveToLine(line);
+                    }
+                    if (QueuePosition == 0)
+                    {
+                        Thread.Sleep(1000);
+                        Line.ServeACustomer(this);
+                        Line.PushLine();
+                    }
+                    //find better line
+                    //swap
+                    int dice = random.Next(1, 7);
+                    if (dice == 1)
+                    {
+                        var line = FindABetterLine(Restaurant.Lines);
+                        MoveToLine(line);
+                    }
+                    if (dice == 2)
+                    {
+                        int customerToSwap = random.Next(0,Line.Customers.Count);
+                        var customerByIndex = Line.Customers[customerToSwap];
+                        if (customerByIndex.QueuePosition != QueuePosition)
+                        {
+                            Swap(customerByIndex);
+                        }
+                    }
+                }
                 _counter--;
             }
         }
